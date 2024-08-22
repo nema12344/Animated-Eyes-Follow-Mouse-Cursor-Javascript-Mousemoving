@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>smiley face</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="taddyface">
+        <div class="taddyeyes">
+            <div class="taddyeye"></div>
+            <div class="taddyeye"></div>
+        </div>
+    </div>
+    <script>
+        document.querySelector("body").addEventListener("mousemove", taddyeyeball);
+
+        function taddyeyeball(event) {
+            var taddyeyes = document.querySelectorAll(".taddyeye");
+            
+            taddyeyes.forEach(function (taddyeye) {
+                let taddyeyeRect = taddyeye.getBoundingClientRect();
+                let taddyeyeCenterX = taddyeyeRect.left + taddyeyeRect.width / 2;
+                let taddyeyeCenterY = taddyeyeRect.top + taddyeyeRect.height / 2;
+                
+                let mouseX = event.pageX;
+                let mouseY = event.pageY;
+
+                let radian = Math.atan2(mouseY - taddyeyeCenterY, mouseX - taddyeyeCenterX);
+                let degrees = radian * (180 / Math.PI) - 90;
+
+                taddyeye.style.transform = "rotate(" + degrees + "deg)";
+            });
+        }
+    </script>
+</body>
+
+</html>
